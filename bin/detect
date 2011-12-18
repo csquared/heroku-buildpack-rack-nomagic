@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# this pack is valid for apps with config.ru
+if [ -f $1/config.ru ]; then
+  echo "config.ru detected"
+  exit 0
+else
+  exit 1
+fi

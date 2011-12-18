@@ -1,0 +1,22 @@
+#!/bin/sh
+
+BUILD_DIR=$1
+
+cat <<EOF
+---
+config_vars:
+  RACK_ENV: production
+  LANG:     en_us.UTF-8
+  PATH:     bundle/ruby/1.9.1/bin:/usr/local/bin:/usr/bin:/bin
+  GEM_PATH: vendor/bundle/ruby/1.9.1
+EOF
+
+if [ ! -f $BUILD_DIR/Procfile ]; then
+"creating default process types"
+cat <<EOF
+default_process_types:
+  web:     bundle exec rackup config.ru -p $PORT
+  rake:    bundle exec rake
+  console: bundle exec console
+EOF
+fi
