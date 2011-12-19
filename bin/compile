@@ -2,7 +2,8 @@
 
 if [ -f $1/Gemfile ]; then
   gem install bundler -i $1/vendor
-  vendor/bin/bundle install --path $1/vendor
+  echo $(ls $1/vendor/bin)
+  $1/vendor/bin/bundle install --path $1/vendor
 else
   echo "No Gemfile found... hope your dependencies are vendored"
 fi
