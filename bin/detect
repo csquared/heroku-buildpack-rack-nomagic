@@ -2,7 +2,7 @@
 
 # this pack is valid for apps with config.ru
 if [ -f $1/config.ru ]; then
-  echo "config.ru detected"
+  echo "Ruby/Rack app"
   exit 0
 else
   exit 1
